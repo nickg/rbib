@@ -31,6 +31,22 @@ module BibTeX
       fs = @fields.collect { |k, f| "  #{f.to_s}" }.join ",\n"
       "@#{@type}{#{@key},\n#{fs}\n}\n\n"
     end
+
+    def reject_fields(keys)
+      r = Entry.new(@type, @key)
+      @fields.each do |k, f|
+        r.add_field f unless keys.index k
+      end
+      return r
+    end
+
+    def select_fields(keys)
+      r = Entry.new(@type, @key)
+      @fields.each do |k, f|
+        r.add_field f if keys.index k
+      end
+      return r
+    end 
   end
 
   # Different types of entries

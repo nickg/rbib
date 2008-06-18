@@ -40,4 +40,31 @@ class TestEntry < Test::Unit::TestCase
 END
     assert_equal expect, @e.to_s
   end
+
+  def test_reject
+    add_default_fields
+
+    expect = <<END
+@book{foo01,
+  author = {C. Doof},
+  year = {2007}
+}
+
+END
+    r = @e.reject_fields [:url]
+    assert_equal expect, r.to_s    
+  end
+
+  def test_select
+    add_default_fields
+
+    expect = <<END
+@book{foo01,
+  url = {www.doof.me.uk}
+}
+
+END
+    r = @e.select_fields [:url]
+    assert_equal expect, r.to_s    
+  end
 end
