@@ -65,6 +65,8 @@ module BibTeX
           if brace_count == 0 then
             @lexer.ignore_whitespace = true
             return str
+          else
+            str += '}'
           end
         when :lbrace
           str += '{'

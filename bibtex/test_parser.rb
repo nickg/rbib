@@ -12,4 +12,12 @@ class TestParser < Test::Unit::TestCase
     assert_equal EntryType::Article, ryan98.type
     assert_equal 1998, ryan98[:year].to_i
   end
+
+  def test_parse_reparse
+    fname = '/tmp/example.bib.stripped'
+    b = Parser.parse 'example.bib'
+    b.save fname
+    Parser.parse fname
+    File.delete fname    
+  end
 end

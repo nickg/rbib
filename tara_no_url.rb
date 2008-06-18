@@ -10,5 +10,5 @@ require 'bibtex/parser'
 ARGV.each do |file|
   BibTeX::Parser.parse(file).map do |entry|
     entry.reject_fields [:url]
-  end.save(file.sub(/\.bib$/, 'stripped.bib'))
+  end.save(file.sub(/\.bib$/, '.stripped.bib'))
 end
