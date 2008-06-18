@@ -28,7 +28,7 @@ module BibTeX
     end
 
     def to_s
-      fs = @fields.collect { |k, f| "  #{f.to_s}" }.join ",\n"
+      fs = @fields.collect { |k, f| "  #{f.to_s}" }.sort.join ",\n"
       "@#{@type}{#{@key},\n#{fs}\n}\n\n"
     end
 
@@ -52,6 +52,19 @@ module BibTeX
   # Different types of entries
   module EntryType
     Book = 'book'
+    Article = 'article'
+    Booklet = 'booklet'
+    Conference = 'conference'
+    InBook = 'inbook'
+    InCollection = 'incollection'
+    InProceedings = 'inproceedings'
+    Manual = 'manual'
+    MastersThesis = 'mastersthesis'
+    Misc = 'misc'
+    PhDThesis = 'phdthesis'
+    Proceedings = 'proceedings'
+    TechReport = 'techreport'
+    Unpublished = 'unpublished'
   end
   
 end

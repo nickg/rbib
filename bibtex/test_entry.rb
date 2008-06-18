@@ -33,8 +33,8 @@ class TestEntry < Test::Unit::TestCase
     expect = <<END
 @book{foo01,
   author = {C. Doof},
-  year = {2007},
-  url = {www.doof.me.uk}
+  url = {www.doof.me.uk},
+  year = {2007}
 }
 
 END
