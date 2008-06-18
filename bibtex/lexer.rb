@@ -76,15 +76,20 @@ module BibTeX
     end
     
     def next_token!
-      skip_whitespace
-      if @scanner.check /\n/ then
+      if @scanner.check /^\s*\n/ then
         @lineno += 1
         @cols_prev = @scanner.pos + 1
       end
+      skip_whitespace
       @rules.each do |regexp, result|
         return result if @lval = @scanner.scan(regexp)
       end
-      raise LexerError.new("Unexpected input #{@scanner.rest}", src_pos)
+      unexpect = if @scanner.rest.length < 10 then
+                   @scanner.rest
+                 else
+                   "#{@scanner.rest.first 10}..."
+                 end
+      raise LexerError.new("Unexpected input #{unexpect}", src_pos)
     end
 
     def peek_token
