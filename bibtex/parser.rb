@@ -7,7 +7,11 @@ module BibTeX
 
   class Parser
     def self.parse(filename)
-      @lexer.feed File.read(filename)
+      parse_string File.read(filename)
+    end
+
+    def self.parse_string(data)
+      @lexer.feed data
 
       b = Bibliography.new
       while @lexer.more_tokens?
