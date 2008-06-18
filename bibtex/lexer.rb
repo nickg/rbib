@@ -115,6 +115,8 @@ module BibTeX
         @scanner.skip /\s+/
       elsif @ignore_whitespace then
         @scanner.skip /[ \t\r]+/
+      elsif @ignore_newlines  then
+        @scanner.skip /[\r\n]+/
       end
     end
   end

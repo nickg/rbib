@@ -53,6 +53,7 @@ module BibTeX
       brace_count = 1
       str = ''
       @lexer.ignore_whitespace = false
+      @lexer.ignore_newlines = true
       loop do
         unless @lexer.more_tokens?
           raise 'Unexpected end of input'
