@@ -6,7 +6,7 @@
 
 require 'test/unit'
 
-Dir.glob('BibTeX/test_*.rb').each do |file|
+Dir.glob('bibtex/test_*.rb').each do |file|
   require file
 end
 

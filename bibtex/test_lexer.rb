@@ -1,4 +1,4 @@
-require 'BibTeX/lexer'
+require 'bibtex/lexer'
 require 'test/unit'
 
 class TestLexer < Test::Unit::TestCase
