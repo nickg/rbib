@@ -113,8 +113,8 @@ module BibTeX
       rules.match /\=/, :equals
       rules.match /\,/, :comma
       rules.match /[\w\-_:]+/, :id
-      rules.match /.+?/, :cdata
       rules.match /^%+.*\n/, :comment
+      rules.match /.+?/, :cdata
     end
   end
   
