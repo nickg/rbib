@@ -31,7 +31,9 @@ module BibTeX
       e = Entry.new(type, key)
       while @lexer.peek_token != :rbrace
         expect :comma, ','
-        e.add_field parse_field
+        unless @lexer.peek_token == :rbrace
+          e.add_field parse_field
+        end
       end
 
       expect :rbrace, '}'
